@@ -6,15 +6,22 @@ const Desktop = () => {
         <div className={style.desktop}>
             <div className={style.card}>
                 Hi!
+                <button>Delete</button>
             </div>
             <div className={style.card}>
                 Hi!
+                <button>Delete</button>
             </div>
             <div className={style.card}>
                 Hi!
+                <button>Delete</button>
             </div>
             <div className={style.card}>
                 Hi!
+                <button>Delete</button>
+            </div>
+            <div className={style.add}>
+                add
             </div>
 
         </div>
