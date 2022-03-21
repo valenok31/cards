@@ -1,0 +1,12 @@
+.desktop{
+    width: 100vw;
+    height: 100vh;
+}
+
+.card{
+    width: 100px;
+    height: 100px;
+    background-color: #61dafb;
+    margin: 5px;
+    display: inline-block;
+}
