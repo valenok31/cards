@@ -1,11 +1,11 @@
 import React from "react";
 import style from './Desktop.module.css'
 
-const Card = () => {
+const Card = (props) => {
     return <>
         <div className={style.card}>
             <div className={style.card__name}>
-                <button>Delete</button>
+                <button onClick={props.delet}>Delete</button>
             </div>
         </div>
     </>
