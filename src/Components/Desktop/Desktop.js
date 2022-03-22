@@ -1,29 +1,17 @@
 import React from "react";
 import style from './Desktop.module.css'
+import Card from "./Card";
+import Add from "./Add";
 
 const Desktop = () => {
     return <>
         <div className={style.desktop}>
-            <div className={style.card}>
-                Hi!
-                <button>Delete</button>
-            </div>
-            <div className={style.card}>
-                Hi!
-                <button>Delete</button>
-            </div>
-            <div className={style.card}>
-                Hi!
-                <button>Delete</button>
-            </div>
-            <div className={style.card}>
-                Hi!
-                <button>Delete</button>
-            </div>
-            <div className={style.add}>
-                add
-            </div>
-
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Add/>
         </div>
     </>
 
