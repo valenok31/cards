@@ -3,7 +3,7 @@ import style from './Desktop.module.css'
 import Card from "./Card";
 import Add from "./Add";
 import {connect} from "react-redux";
-import {setDeleteCards, setNumberCards} from "../../redux/addCard_reducer";
+import {setDeleteCards, setEditName, setNumberCards} from "../../redux/addCard_reducer";
 
 class Desktop extends React.Component {
 
@@ -14,16 +14,18 @@ class Desktop extends React.Component {
         let addCardDelete = () => {
             return this.props.setDeleteCards();
         };
+        let editNameCard = () => {
+            return this.props.setEditName('343')
+        }
 
-        let cardsNumbers = this.props.numberСards.map(w => {
-            return <Card delet={addCardDelete}/>
+        let cardsNumbers = this.props.numberСards.map((w, n) => {
+            return <Card delet={addCardDelete} number={n} opt={w} editNameCard={editNameCard}/>
         });
 
         return <>
             <div className={style.desktop}>
                 {cardsNumbers}
                 <Add addCard={addCard}/>
-                {this.props.numberСards}
             </div>
         </>
     }
@@ -35,4 +37,4 @@ const mapStateToProps = (props) => {
     }
 }
 
-export default connect(mapStateToProps, {setNumberCards,setDeleteCards})(Desktop);
+export default connect(mapStateToProps, {setNumberCards, setDeleteCards, setEditName})(Desktop);
