@@ -30,7 +30,7 @@ const usersReducer = (state = initialState, action) => {
                 numberСards: [...state.numberСards],
             }
         case SET_EDIT_NAME:
-            state.numberСards[0].name = action.newName;
+            state.numberСards[action.newName].name = action.newName;
             return {
                 ...state,
                 numberСards: [...state.numberСards],
