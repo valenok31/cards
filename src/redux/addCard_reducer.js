@@ -7,9 +7,14 @@ let initialState = {
         {
             id: 1,
             name: 'card name',
-            text: 'text here'
+            text: 'text here',
+            switchCardName: true,
         },
     ],
+    toggleCardName(newName){
+        debugger;
+       this.state.numberСards[newName].switchCardName=false;
+    }
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -19,9 +24,10 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 numberСards: [...state.numberСards, {
-                    id: state.numberСards.length+1,
+                    id: state.numberСards.length + 1,
                     name: 'card name',
-                    text: 'text here'
+                    text: 'text here',
+                    switchCardName: true,
                 },],
             }
         case SET_DELETE_CARDS:
@@ -30,10 +36,15 @@ const usersReducer = (state = initialState, action) => {
                 numberСards: [...state.numberСards],
             }
         case SET_EDIT_NAME:
+            debugger;
             state.numberСards[action.newName].name = action.newName;
+            state.toggleCardName(action.newName);
+            let etr = state.numberСards[action.newName].switchCardName;
             return {
-                ...state,
                 numberСards: [...state.numberСards],
+
+                //...state.numberСards[action.newName],
+                //switchCardName: false,
             }
 
 
@@ -53,7 +64,6 @@ export const setDeleteCards = () => ({
 export const setEditName = (newName) => ({
     type: SET_EDIT_NAME, newName
 })
-
 
 
 export default usersReducer;
