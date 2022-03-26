@@ -11,9 +11,9 @@ let initialState = {
             switchCardName: true,
         },
     ],
-    toggleCardName(newName){
+    toggleCardName(newName) {
         debugger;
-       this.state.numberСards[newName].switchCardName=false;
+        this.numberСards[newName].switchCardName = !this.numberСards[newName].switchCardName;
     }
 }
 
@@ -37,9 +37,9 @@ const usersReducer = (state = initialState, action) => {
             }
         case SET_EDIT_NAME:
             debugger;
-            state.numberСards[action.newName].name = action.newName;
+            //state.numberСards[action.newName].name = action.newName;
+
             state.toggleCardName(action.newName);
-            let etr = state.numberСards[action.newName].switchCardName;
             return {
                 numberСards: [...state.numberСards],
 

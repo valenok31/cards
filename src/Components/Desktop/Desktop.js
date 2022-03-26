@@ -38,6 +38,8 @@ const mapStateToProps = (props) => {
     return {
         numberСards: props.addCard_reducer.numberСards,
         switchCardName: props.addCard_reducer.switchCardName,
+        toggleCardName: props.addCard_reducer.toggleCardName,
+
     }
 }
 
