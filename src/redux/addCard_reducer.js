@@ -40,12 +40,17 @@ const usersReducer = (state = initialState, action) => {
         /* TODO */
         case SET_EDIT_NAME:
             for (let i = 0; i < state.numberСards.length; i++) {
-                if (i == action.newName) {
+                if (i == action.id) {
                     return {
                         ...state,
                         numberСards: [...state.numberСards.map((u, n) => {
-                                if (n == action.newName) {
-                                    return {...u, switchCardName: !state.numberСards[i].switchCardName}
+                                if (n == action.id) {
+
+                                    return {
+                                        ...u,
+                                        switchCardName: !state.numberСards[i].switchCardName,
+                                        name: action.newName,
+                                    }
                                 }
                                 return u;
                             }
@@ -57,12 +62,16 @@ const usersReducer = (state = initialState, action) => {
         /* TODO */
         case SET_EDIT_FIELD:
             for (let i = 0; i < state.numberСards.length; i++) {
-                if (i == action.newName) {
+                if (i == action.id) {
                     return {
                         ...state,
                         numberСards: [...state.numberСards.map((u, n) => {
-                                if (n == action.newName) {
-                                    return {...u, switchCardField: !state.numberСards[i].switchCardField}
+                                if (n == action.id) {
+                                    return {
+                                        ...u,
+                                        switchCardField: !state.numberСards[i].switchCardField,
+                                        translation_ru: action.newName,
+                                    }
                                 }
                                 return u;
                             }
@@ -84,12 +93,12 @@ export const setDeleteCards = (newName) => ({
     type: SET_DELETE_CARDS, newName
 })
 
-export const setEditName = (newName) => ({
-    type: SET_EDIT_NAME, newName
+export const setEditName = (id, newName) => ({
+    type: SET_EDIT_NAME, id, newName
 })
 
-export const setEditField = (newName) => ({
-    type: SET_EDIT_FIELD, newName
+export const setEditField = (id, newName) => ({
+    type: SET_EDIT_FIELD, id, newName
 })
 
 export default usersReducer;

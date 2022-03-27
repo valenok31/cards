@@ -14,11 +14,11 @@ class Desktop extends React.Component {
         let addCardDelete = (newName) => {
             return this.props.setDeleteCards(newName);
         };
-        let editNameCard = (newName) => {
-            return this.props.setEditName(newName)
+        let editNameCard = (id, newName) => {
+            return this.props.setEditName(id, newName)
         }
-        let editFieldCard = (newName) => {
-            return this.props.setEditField(newName)
+        let editFieldCard = (id, newName) => {
+            return this.props.setEditField(id, newName)
         }
 
         let cardsNumbers = this.props.numberСards.map((u, n) => {
