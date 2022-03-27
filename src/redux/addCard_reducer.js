@@ -29,22 +29,40 @@ const usersReducer = (state = initialState, action) => {
                 },],
             }
         case SET_DELETE_CARDS:
-            state.numberСards.length = state.numberСards.length - 1;
             return {
-                numberСards: [...state.numberСards],
+                ...state,
+                numberСards: [...state.numberСards.pop() && state.numberСards],
             }
 
         case SET_EDIT_NAME:
+            debugger
             return {
                 ...state,
                 switchCardName: !state.switchCardName,
             }
+
+        /*        case SET_EDIT_NAME:
+                    debugger
+                    console.log(action.newName);
+                    for (let i = 0; i < state.numberСards.length; i++) {
+                        if (state.numberСards[i].id == action.newName) {
+                            return {
+                                ...state,
+                                switchCardName: !state.switchCardName,
+                            }
+
+                        }else{
+                            return {
+                            ...state,
+                            switchCardName: state.switchCardName,
+                        }}
+                    }*/
+
         case SET_EDIT_FIELD:
             return {
                 ...state,
                 switchCardField: !state.switchCardField,
             }
-
 
         default:
             return state;

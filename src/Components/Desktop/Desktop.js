@@ -22,10 +22,13 @@ class Desktop extends React.Component {
         }
 
         let cardsNumbers = this.props.numberСards.map((w, n) => {
-            return <Card delet={addCardDelete}
+            return <Card kay={n} id={n}
+                         delet={addCardDelete}
                          opt={w}
                          editNameCard={editNameCard}
-                         editFieldCard={editFieldCard} {...this.props}/>
+                         editFieldCard={editFieldCard}
+                         switchCardField={this.props.switchCardField}
+                         switchCardName={this.props.switchCardName}/>
         });
 
         return <>
@@ -46,4 +49,9 @@ const mapStateToProps = (props) => {
     }
 }
 
-export default connect(mapStateToProps, {setNumberCards, setDeleteCards, setEditName, setEditField})(Desktop);
+export default connect(mapStateToProps, {
+    setNumberCards,
+    setDeleteCards,
+    setEditName,
+    setEditField,
+})(Desktop);
