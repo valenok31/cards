@@ -9,11 +9,12 @@ let initialState = {
             id: 1,
             name: 'card name',
             text: 'text here',
-
+            switchCardName: true,
+            switchCardField: true,
         },
     ],
-    switchCardName: true,
-    switchCardField: true,
+    /*    switchCardName: true,
+        switchCardField: true,*/
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -26,6 +27,8 @@ const usersReducer = (state = initialState, action) => {
                     id: state.numberСards.length + 1,
                     name: 'card name',
                     text: 'text here',
+                    switchCardName: true,
+                    switchCardField: true,
                 },],
             }
         case SET_DELETE_CARDS:
@@ -35,28 +38,21 @@ const usersReducer = (state = initialState, action) => {
             }
 
         case SET_EDIT_NAME:
-            debugger
-            return {
-                ...state,
-                switchCardName: !state.switchCardName,
+            for (let i = 0; i < state.numberСards.length; i++) {
+                if (state.numberСards[i].id == action.newName) {
+                    return {
+                        ...state,
+                        numberСards: [...state.numberСards.map(u => {
+                                if(u.id == action.newName){
+                                    return {...u, switchCardName: !state.numberСards[i].switchCardName}
+                                }
+                                return u;
+                        }
+
+                        ), ],
+                    }
+                }
             }
-
-        /*        case SET_EDIT_NAME:
-                    debugger
-                    console.log(action.newName);
-                    for (let i = 0; i < state.numberСards.length; i++) {
-                        if (state.numberСards[i].id == action.newName) {
-                            return {
-                                ...state,
-                                switchCardName: !state.switchCardName,
-                            }
-
-                        }else{
-                            return {
-                            ...state,
-                            switchCardName: state.switchCardName,
-                        }}
-                    }*/
 
         case SET_EDIT_FIELD:
             return {

@@ -27,8 +27,8 @@ class Desktop extends React.Component {
                          opt={w}
                          editNameCard={editNameCard}
                          editFieldCard={editFieldCard}
-                         switchCardField={this.props.switchCardField}
-                         switchCardName={this.props.switchCardName}/>
+/*                         switchCardField={this.props.switchCardField}
+                         switchCardName={this.props.switchCardName}*//>
         });
 
         return <>
@@ -43,8 +43,8 @@ class Desktop extends React.Component {
 const mapStateToProps = (props) => {
     return {
         numberСards: props.addCard_reducer.numberСards,
-        switchCardName: props.addCard_reducer.switchCardName,
-        switchCardField: props.addCard_reducer.switchCardField,
+/*        switchCardName: props.addCard_reducer.switchCardName,
+        switchCardField: props.addCard_reducer.switchCardField,*/
 
     }
 }
