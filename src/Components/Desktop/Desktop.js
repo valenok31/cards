@@ -11,8 +11,8 @@ class Desktop extends React.Component {
         let addCard = () => {
             return this.props.setNumberCards();
         };
-        let addCardDelete = () => {
-            return this.props.setDeleteCards();
+        let addCardDelete = (newName) => {
+            return this.props.setDeleteCards(newName);
         };
         let editNameCard = (newName) => {
             return this.props.setEditName(newName)
@@ -21,14 +21,12 @@ class Desktop extends React.Component {
             return this.props.setEditField(newName)
         }
 
-        let cardsNumbers = this.props.numberСards.map((w, n) => {
+        let cardsNumbers = this.props.numberСards.map((u, n) => {
             return <Card kay={n} id={n}
-                         delet={addCardDelete}
-                         opt={w}
+                         addCardDelete={addCardDelete}
+                         opt={u}
                          editNameCard={editNameCard}
-                         editFieldCard={editFieldCard}
-/*                         switchCardField={this.props.switchCardField}
-                         switchCardName={this.props.switchCardName}*//>
+                         editFieldCard={editFieldCard}/>
         });
 
         return <>
@@ -43,9 +41,6 @@ class Desktop extends React.Component {
 const mapStateToProps = (props) => {
     return {
         numberСards: props.addCard_reducer.numberСards,
-/*        switchCardName: props.addCard_reducer.switchCardName,
-        switchCardField: props.addCard_reducer.switchCardField,*/
-
     }
 }
 

@@ -7,14 +7,13 @@ let initialState = {
     numberСards: [
         {
             id: 1,
-            name: 'card name',
-            text: 'text here',
+            name: 'wild',
+            transcription: '[waɪld]',
+            translation_ru: 'дикий',
             switchCardName: true,
             switchCardField: true,
         },
     ],
-    /*    switchCardName: true,
-        switchCardField: true,*/
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -25,8 +24,9 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 numberСards: [...state.numberСards, {
                     id: state.numberСards.length + 1,
-                    name: 'card name',
-                    text: 'text here',
+                    name: 'card name' + state.numberСards.length,
+                    transcription: '[text here]',
+                    translation_ru: 'text here',
                     switchCardName: true,
                     switchCardField: true,
                 },],
@@ -34,30 +34,41 @@ const usersReducer = (state = initialState, action) => {
         case SET_DELETE_CARDS:
             return {
                 ...state,
-                numberСards: [...state.numberСards.pop() && state.numberСards],
+                numberСards: [...state.numberСards.splice(action.newName, 1) && state.numberСards],
             }
 
+        /* TODO */
         case SET_EDIT_NAME:
             for (let i = 0; i < state.numberСards.length; i++) {
-                if (state.numberСards[i].id == action.newName) {
+                if (i == action.newName) {
                     return {
                         ...state,
-                        numberСards: [...state.numberСards.map(u => {
-                                if(u.id == action.newName){
+                        numberСards: [...state.numberСards.map((u, n) => {
+                                if (n == action.newName) {
                                     return {...u, switchCardName: !state.numberСards[i].switchCardName}
                                 }
                                 return u;
-                        }
-
-                        ), ],
+                            }
+                        ),],
                     }
                 }
             }
 
+        /* TODO */
         case SET_EDIT_FIELD:
-            return {
-                ...state,
-                switchCardField: !state.switchCardField,
+            for (let i = 0; i < state.numberСards.length; i++) {
+                if (i == action.newName) {
+                    return {
+                        ...state,
+                        numberСards: [...state.numberСards.map((u, n) => {
+                                if (n == action.newName) {
+                                    return {...u, switchCardField: !state.numberСards[i].switchCardField}
+                                }
+                                return u;
+                            }
+                        ),],
+                    }
+                }
             }
 
         default:
@@ -69,8 +80,8 @@ export const setNumberCards = () => ({
     type: SET_NUMBER_CARDS
 });
 
-export const setDeleteCards = () => ({
-    type: SET_DELETE_CARDS
+export const setDeleteCards = (newName) => ({
+    type: SET_DELETE_CARDS, newName
 })
 
 export const setEditName = (newName) => ({
@@ -80,6 +91,5 @@ export const setEditName = (newName) => ({
 export const setEditField = (newName) => ({
     type: SET_EDIT_FIELD, newName
 })
-
 
 export default usersReducer;
