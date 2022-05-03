@@ -25,7 +25,7 @@ const usersReducer = (state = initialState, action) => {
                 numberСards: [...state.numberСards, {
                     id: state.numberСards.length + 1,
                     name: 'card name' + state.numberСards.length,
-                    transcription: '[text here]',
+                    transcription: '[transcription]',
                     translation_ru: 'text here',
                     switchCardName: true,
                     switchCardField: true,
@@ -39,8 +39,7 @@ const usersReducer = (state = initialState, action) => {
 
         /* TODO */
         case SET_EDIT_NAME:
-            for (let i = 0; i < state.numberСards.length; i++) {
-                if (i == action.id) {
+                if (state.numberСards[action.id]){
                     return {
                         ...state,
                         numberСards: [...state.numberСards.map((u, n) => {
@@ -48,7 +47,7 @@ const usersReducer = (state = initialState, action) => {
 
                                     return {
                                         ...u,
-                                        switchCardName: !state.numberСards[i].switchCardName,
+                                        switchCardName: !state.numberСards[n].switchCardName,
                                         name: action.newName,
                                     }
                                 }
@@ -57,7 +56,6 @@ const usersReducer = (state = initialState, action) => {
                         ),],
                     }
                 }
-            }
 
         /* TODO */
         case SET_EDIT_FIELD:
