@@ -4,7 +4,7 @@ const SET_EDIT_NAME = 'SET_EDIT_NAME';
 const SET_EDIT_FIELD = 'SET_EDIT_FIELD';
 
 let initialState = {
-    numberСards: [
+    numberCards: [
         {
             id: 1,
             name: 'wild',
@@ -22,9 +22,9 @@ const usersReducer = (state = initialState, action) => {
         case SET_NUMBER_CARDS:
             return {
                 ...state,
-                numberСards: [...state.numberСards, {
-                    id: state.numberСards.length + 1,
-                    name: 'card name' + state.numberСards.length,
+                numberCards: [...state.numberCards, {
+                    id: state.numberCards.length + 1,
+                    name: 'card name' + state.numberCards.length,
                     transcription: '[transcription]',
                     translation_ru: 'text here',
                     switchCardName: true,
@@ -34,20 +34,20 @@ const usersReducer = (state = initialState, action) => {
         case SET_DELETE_CARDS:
             return {
                 ...state,
-                numberСards: [...state.numberСards.splice(action.newName, 1) && state.numberСards],
+                numberCards: [...state.numberCards.splice(action.newName, 1) && state.numberCards],
             }
 
         /* TODO */
         case SET_EDIT_NAME:
-                if (state.numberСards[action.id]){
+                if (state.numberCards[action.id]){
                     return {
                         ...state,
-                        numberСards: [...state.numberСards.map((u, n) => {
+                        numberCards: [...state.numberCards.map((u, n) => {
                                 if (n == action.id) {
 
                                     return {
                                         ...u,
-                                        switchCardName: !state.numberСards[n].switchCardName,
+                                        switchCardName: !state.numberCards[n].switchCardName,
                                         name: action.newName,
                                     }
                                 }
@@ -59,15 +59,15 @@ const usersReducer = (state = initialState, action) => {
 
         /* TODO */
         case SET_EDIT_FIELD:
-            for (let i = 0; i < state.numberСards.length; i++) {
+            for (let i = 0; i < state.numberCards.length; i++) {
                 if (i == action.id) {
                     return {
                         ...state,
-                        numberСards: [...state.numberСards.map((u, n) => {
+                        numberCards: [...state.numberCards.map((u, n) => {
                                 if (n == action.id) {
                                     return {
                                         ...u,
-                                        switchCardField: !state.numberСards[i].switchCardField,
+                                        switchCardField: !state.numberCards[i].switchCardField,
                                         translation_ru: action.newName,
                                     }
                                 }

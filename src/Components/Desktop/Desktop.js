@@ -21,7 +21,7 @@ class Desktop extends React.Component {
             return this.props.setEditField(id, newName)
         }
 
-        let cardsNumbers = this.props.numberСards.map((u, n) => {
+        let cardsNumbers = this.props.numberCards.map((u, n) => {
             return <Card kay={n} id={n}
                          addCardDelete={addCardDelete}
                          opt={u}
@@ -40,7 +40,7 @@ class Desktop extends React.Component {
 
 const mapStateToProps = (props) => {
     return {
-        numberСards: props.addCard_reducer.numberСards,
+        numberCards: props.addCard_reducer.numberCards,
     }
 }
 
