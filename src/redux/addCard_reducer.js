@@ -39,42 +39,40 @@ const usersReducer = (state = initialState, action) => {
 
         /* TODO */
         case SET_EDIT_NAME:
-                if (state.numberCards[action.id]){
-                    return {
-                        ...state,
-                        numberCards: [...state.numberCards.map((u, n) => {
-                                if (n == action.id) {
+            if (state.numberCards[action.id]) {
+                return {
+                    ...state,
+                    numberCards: [...state.numberCards.map((u, n) => {
+                            if (n == action.id) {
 
-                                    return {
-                                        ...u,
-                                        switchCardName: !state.numberCards[n].switchCardName,
-                                        name: action.newName,
-                                    }
+                                return {
+                                    ...u,
+                                    switchCardName: !state.numberCards[n].switchCardName,
+                                    name: action.newName,
                                 }
-                                return u;
                             }
-                        ),],
-                    }
+                            return u;
+                        }
+                    ),],
                 }
+            }
 
         /* TODO */
         case SET_EDIT_FIELD:
-            for (let i = 0; i < state.numberCards.length; i++) {
-                if (i == action.id) {
-                    return {
-                        ...state,
-                        numberCards: [...state.numberCards.map((u, n) => {
-                                if (n == action.id) {
-                                    return {
-                                        ...u,
-                                        switchCardField: !state.numberCards[i].switchCardField,
-                                        translation_ru: action.newName,
-                                    }
+            if (state.numberCards[action.id]) {
+                return {
+                    ...state,
+                    numberCards: [...state.numberCards.map((u, n) => {
+                            if (n == action.id) {
+                                return {
+                                    ...u,
+                                    switchCardField: !state.numberCards[n].switchCardField,
+                                    translation_ru: action.newName,
                                 }
-                                return u;
                             }
-                        ),],
-                    }
+                            return u;
+                        }
+                    ),],
                 }
             }
 
